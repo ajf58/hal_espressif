@@ -6,6 +6,7 @@
 
 #include <stdint.h>
 #include <sys/cdefs.h>
+#include <sys/time.h>
 #include <sys/param.h>
 #include "sdkconfig.h"
 #include "esp_attr.h"
@@ -31,7 +32,7 @@
  * Larger values increase startup delay. Smaller values may cause false positive
  * detection (i.e. oscillator runs for a few cycles and then stops).
  */
-#define SLOW_CLK_CAL_CYCLES     CONFIG_ESP32_RTC_CLK_CAL_CYCLES
+#define SLOW_CLK_CAL_CYCLES     CONFIG_RTC_CLK_CAL_CYCLES
 
 static void select_rtc_slow_clk(soc_rtc_slow_clk_src_t rtc_slow_clk_src);
 
