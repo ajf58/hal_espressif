@@ -131,6 +131,8 @@ if(CONFIG_SOC_SERIES_ESP32C6)
     )
   endif()
 
+  zephyr_library_sources_ifdef(CONFIG_COUNTER_TMR_ESP32 ../../components/hal/timer_hal.c)
+
   if(CONFIG_PM OR CONFIG_POWEROFF)
   zephyr_sources(
 	../../components/esp_hw_support/sleep_gpio.c
