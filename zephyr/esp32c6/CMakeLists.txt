@@ -147,6 +147,17 @@ if(CONFIG_SOC_SERIES_ESP32C6)
 	)
   endif()
 
+  zephyr_sources_ifdef(
+    CONFIG_ESP32_TEMP
+    ../../components/driver/deprecated/rtc_temperature_legacy.c
+    ../../components/soc//${CONFIG_SOC_SERIES}/temperature_sensor_periph.c
+    ../../components/efuse/${CONFIG_SOC_SERIES}/esp_efuse_rtc_calib.c
+    ../../components/efuse/${CONFIG_SOC_SERIES}/esp_efuse_table.c
+    ../../components/efuse/src/esp_efuse_api.c
+    ../../components/efuse/src/esp_efuse_utility.c
+    ../../components/efuse/${CONFIG_SOC_SERIES}/esp_efuse_utility.c
+  )
+
   if (CONFIG_MCUBOOT)
     zephyr_compile_definitions(BOOTLOADER_BUILD)
     zephyr_compile_definitions(NDEBUG)
@@ -193,6 +204,7 @@ if(CONFIG_SOC_SERIES_ESP32C6)
     ../../components/esp_hw_support/esp_clk.c
     ../../components/esp_hw_support/periph_ctrl.c
     ../../components/esp_hw_support/regi2c_ctrl.c
+    ../../components/esp_hw_support/sar_periph_ctrl_common.c
 
     ../../components/esp_hw_support/port/esp_clk_tree_common.c
 
